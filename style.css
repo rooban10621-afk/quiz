@@ -1,0 +1,1810 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cyan: #00f6ff;
+    --blue: #168cff;
+    --purple: #a855ff;
+    --pink: #ff22d6;
+    --green: #00ffb3;
+    --yellow: #ffe600;
+    --red: #ff315c;
+    --dark: #020617;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    color: white;
+
+    background-image:
+        linear-gradient(
+            rgba(1, 5, 25, 0.58),
+            rgba(1, 5, 25, 0.72)
+        ),
+        url("Background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0, 238, 255, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(255, 0, 200, 0.12),
+            transparent 35%
+        );
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================================
+   LOGIN PAGE
+========================================= */
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+.login-container {
+    width: min(92%, 470px);
+
+    padding: 35px 35px 28px;
+
+    text-align: center;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 12, 45, 0.96),
+            rgba(18, 0, 50, 0.95)
+        );
+
+    box-shadow:
+        0 0 25px rgba(0, 238, 255, 0.35),
+        0 0 70px rgba(168, 85, 255, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    animation:
+        loginAppear 0.8s ease;
+}
+
+
+/* LOGIN LOGO */
+
+.login-logo {
+    width: 115px;
+    height: 115px;
+
+    margin: 0 auto 15px;
+
+    padding: 7px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid var(--cyan);
+
+    box-shadow:
+        0 0 15px var(--cyan),
+        0 0 35px rgba(0, 238, 255, 0.35);
+
+    animation:
+        logoGlow 2s infinite alternate;
+}
+
+.login-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+/* LOGIN TITLE */
+
+.login-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.login-title h1 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 36px;
+
+    color: var(--cyan);
+
+    text-shadow:
+        0 0 10px var(--cyan),
+        0 0 25px var(--cyan);
+}
+
+.login-title span {
+    color: var(--yellow);
+
+    font-size: 25px;
+
+    animation:
+        electric 1s infinite alternate;
+}
+
+.login-subtitle {
+    margin-top: 5px;
+
+    color: #c7dfff;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.login-line {
+    width: 70%;
+
+    height: 2px;
+
+    margin: 18px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            var(--pink),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px var(--cyan);
+}
+
+.login-container h2 {
+    font-family: "Orbitron", sans-serif;
+
+    color: white;
+
+    font-size: 20px;
+
+    margin-top: 5px;
+}
+
+.welcome-text {
+    color: #9defff;
+
+    font-size: 13px;
+
+    margin: 6px 0 23px;
+}
+
+
+/* INPUT */
+
+.input-group {
+    text-align: left;
+
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--cyan);
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    width: 100%;
+
+    padding: 15px 17px;
+
+    border: 2px solid #2767e9;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background:
+        rgba(1, 12, 45, 0.9);
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #7185ae;
+}
+
+.input-group input:focus {
+    border-color: var(--cyan);
+
+    box-shadow:
+        0 0 15px rgba(0, 238, 255, 0.3);
+
+    transform: translateY(-2px);
+}
+
+
+/* PASSWORD */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 55px;
+}
+
+.show-password {
+    position: absolute;
+
+    right: 8px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 150, 255, 0.15);
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.show-password:hover {
+    background:
+        rgba(0, 238, 255, 0.25);
+}
+
+
+/* DOB NOTE */
+
+.dob-note {
+    margin-top: 9px;
+
+    padding: 9px;
+
+    border-radius: 10px;
+
+    border: 1px solid #7045ff;
+
+    background:
+        rgba(75, 30, 150, 0.2);
+
+    color: #d8c8ff;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+.dob-note strong {
+    color: var(--yellow);
+}
+
+.dob-format {
+    text-align: center;
+
+    margin-top: 5px;
+
+    color: #8096bd;
+
+    font-size: 10px;
+}
+
+
+/* ERROR */
+
+.login-error {
+    min-height: 25px;
+
+    margin: 5px 0;
+
+    color: #ff5577;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.login-error.show {
+    animation:
+        shake 0.4s ease;
+}
+
+
+/* LOGIN BUTTON */
+
+.login-button {
+    width: 100%;
+
+    padding: 16px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #00d9ff,
+            #7025ff,
+            #d800ff
+        );
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(0, 217, 255, 0.35);
+
+    transition: 0.3s;
+}
+
+.login-button:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    box-shadow:
+        0 0 30px rgba(0, 238, 255, 0.6);
+}
+
+.login-button span {
+    margin-left: 8px;
+}
+
+
+/* LOGIN FOOTER */
+
+.login-footer {
+    margin-top: 20px;
+
+    color: #8199c5;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   QUIZ PAGE
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+.quiz-page {
+    min-height: 100vh;
+}
+
+.top-header {
+    width: 94%;
+    max-width: 1500px;
+
+    margin: 20px auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+}
+
+.college-logo-box {
+    width: 95px;
+    height: 95px;
+
+    padding: 6px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    border: 3px solid var(--cyan);
+
+    box-shadow:
+        0 0 10px var(--cyan),
+        0 0 25px rgba(0, 238, 255, 0.5);
+}
+
+.college-logo-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+/* STREAK */
+
+.streak-box {
+    min-width: 130px;
+
+    padding: 10px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: 2px solid #ff6a00;
+
+    border-radius: 16px;
+
+    background:
+        rgba(35, 10, 0, 0.82);
+
+    box-shadow:
+        0 0 12px rgba(255, 100, 0, 0.5);
+
+    animation:
+        streakPulse 1.8s infinite alternate;
+}
+
+.streak-icon {
+    font-size: 32px;
+}
+
+.streak-label {
+    display: block;
+
+    color: #ffb000;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.streak-box strong {
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 22px;
+}
+
+
+/* LOGO */
+
+.logo-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px 22px;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 20px;
+
+    background:
+        rgba(2, 6, 23, 0.82);
+
+    box-shadow:
+        0 0 10px var(--cyan);
+}
+
+.logo-text,
+.quiz-text {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 38px;
+
+    font-weight: 800;
+}
+
+.logo-text {
+    color: var(--cyan);
+
+    text-shadow:
+        0 0 10px var(--cyan);
+}
+
+.quiz-text {
+    color: #ff4be1;
+
+    text-shadow:
+        0 0 10px #ff4be1;
+}
+
+.pulse {
+    font-size: 25px;
+}
+
+.chip {
+    font-size: 30px;
+
+    color: var(--cyan);
+}
+
+.tagline {
+    font-family: "Orbitron", sans-serif;
+
+    color: white;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+.fun-message {
+    padding: 13px 23px;
+
+    text-align: center;
+
+    border: 2px solid var(--pink);
+
+    border-radius: 18px;
+
+    background:
+        rgba(20, 0, 50, 0.7);
+
+    box-shadow:
+        0 0 12px var(--pink);
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 12px;
+}
+
+
+/* MAIN */
+
+.main-container {
+    width: 94%;
+    max-width: 1500px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        200px
+        minmax(500px, 1fr)
+        260px;
+
+    gap: 20px;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    padding: 14px;
+
+    border: 1px solid rgba(0, 238, 255, 0.7);
+
+    border-radius: 22px;
+
+    background:
+        rgba(1, 7, 30, 0.82);
+}
+
+.side-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border-radius: 15px;
+
+    color: #a8eaff;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.side-item:hover {
+    transform: translateX(7px);
+
+    color: white;
+
+    background:
+        rgba(0, 238, 255, 0.15);
+}
+
+.side-item.active {
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5222dd,
+            #32117a
+        );
+
+    border: 1px solid var(--cyan);
+}
+
+
+/* QUIZ TOP */
+
+.quiz-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.question-number,
+.score-box {
+    padding: 13px 23px;
+
+    border: 1px solid #147aff;
+
+    border-radius: 14px;
+
+    background:
+        rgba(1, 9, 35, 0.9);
+
+    font-family: "Orbitron", sans-serif;
+}
+
+#score {
+    color: var(--yellow);
+}
+
+
+/* PROGRESS */
+
+.progress-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 12px 0;
+}
+
+.progress-bar {
+    flex: 1;
+
+    height: 11px;
+
+    background:
+        rgba(0, 0, 0, 0.6);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid #166cff;
+}
+
+#progress {
+    height: 100%;
+
+    width: 5%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--blue),
+            var(--purple)
+        );
+
+    box-shadow:
+        0 0 15px var(--cyan);
+
+    transition: width 0.5s ease;
+}
+
+#progressPercent {
+    color: var(--cyan);
+
+    font-family: "Orbitron", sans-serif;
+}
+
+
+/* ROBOT */
+
+.robot-message {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 4px 0 10px 20px;
+}
+
+.robot {
+    font-size: 55px;
+
+    animation:
+        robotFloat 2s infinite ease-in-out;
+}
+
+.speech {
+    padding: 9px 17px;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 20px;
+
+    background:
+        rgba(0, 20, 60, 0.85);
+
+    color: var(--cyan);
+}
+
+
+/* QUESTION */
+
+.question-card {
+    padding: 27px;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 12, 45, 0.96),
+            rgba(5, 2, 35, 0.94)
+        );
+
+    box-shadow:
+        0 0 25px rgba(0, 238, 255, 0.35);
+}
+
+.question-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+.question-icon {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--cyan);
+
+    color: var(--cyan);
+
+    font-size: 25px;
+}
+
+.question-title h1 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(20px, 3vw, 29px);
+}
+
+
+.answers {
+    display: grid;
+
+    gap: 13px;
+}
+
+.answer {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 2px solid #2767e9;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(11, 33, 100, 0.9),
+            rgba(3, 13, 50, 0.8)
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: 0.25s;
+
+    text-align: left;
+}
+
+.answer:hover {
+    transform: translateX(6px);
+
+    border-color: var(--cyan);
+
+    box-shadow:
+        0 0 15px rgba(0, 238, 255, 0.35);
+}
+
+.answer-letter {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #6c21ff
+        );
+
+    font-family: "Orbitron", sans-serif;
+}
+
+.answer.correct {
+    border-color: var(--green);
+
+    background:
+        rgba(0, 255, 150, 0.18);
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 150, 0.5);
+}
+
+.answer.wrong {
+    border-color: var(--red);
+
+    background:
+        rgba(255, 30, 80, 0.18);
+
+    animation:
+        shake 0.4s ease;
+}
+
+
+
+.motivation-message {
+    margin-top: 17px;
+
+    padding: 12px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    border: 1px solid #754cff;
+
+    background:
+        rgba(50, 20, 100, 0.35);
+
+    color: #d8c5ff;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 13px;
+
+    min-height: 42px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.motivation-message.success {
+    border-color: var(--green);
+
+    color: var(--green);
+}
+
+.motivation-message.encourage {
+    border-color: var(--yellow);
+
+    color: var(--yellow);
+}
+
+
+
+.bottom-area {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        0.8fr
+        auto;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 20px;
+}
+
+.hint-box {
+    padding: 14px;
+
+    border: 1px solid var(--yellow);
+
+    border-radius: 15px;
+
+    background:
+        rgba(40, 30, 0, 0.5);
+}
+
+.hint-title {
+    color: var(--yellow);
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.hint-box p {
+    color: #ddd;
+
+    font-size: 12px;
+}
+
+.fun-comment {
+    text-align: center;
+
+    color: #ffe500;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 13px;
+}
+
+.next-button {
+    border: none;
+
+    padding: 15px 26px;
+
+    border-radius: 17px;
+
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            100deg,
+            #00d9ff,
+            #7025ff,
+            #d800ff
+        );
+
+    transition: 0.3s;
+}
+
+.next-button:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.next-button:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+
+.feedback {
+    text-align: center;
+
+    margin-top: 12px;
+
+    min-height: 24px;
+
+    font-weight: 700;
+}
+
+.correct-feedback {
+    color: var(--green);
+}
+
+.wrong-feedback {
+    color: #ff5577;
+}
+
+
+/* RIGHT PANEL */
+
+.right-panel {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.info-card {
+    padding: 18px;
+
+    border: 1px solid #008dff;
+
+    border-radius: 20px;
+
+    background:
+        rgba(1, 7, 32, 0.85);
+}
+
+.info-card h2 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 14px;
+
+    margin-bottom: 14px;
+}
+
+.mini-progress {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.dot {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    border: 2px solid #16427a;
+}
+
+.active-dot {
+    background: var(--cyan);
+
+    border-color: var(--cyan);
+}
+
+.mini-progress strong {
+    margin-left: auto;
+}
+
+
+
+.big-score {
+    text-align: center;
+
+    padding: 14px;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 15px;
+
+    color: var(--green);
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 32px;
+}
+
+.big-score small {
+    font-size: 17px;
+
+    color: white;
+}
+
+
+
+
+.streak-display {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 8px;
+
+    color: #ffae00;
+
+    font-family: "Orbitron", sans-serif;
+}
+
+.streak-display span {
+    font-size: 35px;
+}
+
+.streak-display small {
+    color: #ddd;
+
+    font-size: 10px;
+}
+
+.streak-fire {
+    text-align: center;
+
+    font-size: 30px;
+}
+
+.streak-fire.active {
+    animation:
+        fireBounce 0.5s infinite alternate;
+}
+
+
+
+.difficulty {
+    text-align: center;
+
+    padding: 9px;
+
+    border: 2px solid var(--pink);
+
+    border-radius: 30px;
+
+    color: #ff55df;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-weight: 700;
+}
+
+.difficulty.easy {
+    border-color: var(--green);
+
+    color: var(--green);
+}
+
+.difficulty-card p {
+    margin-top: 9px;
+
+    text-align: center;
+
+    color: #ffe500;
+
+    font-size: 10px;
+}
+
+
+
+
+.motivational-card {
+    min-height: 115px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 23px;
+
+    border: 2px solid var(--cyan);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 220, 255, 0.2),
+            rgba(0, 0, 30, 0.8)
+        );
+
+    color: var(--cyan);
+
+    font-family: "Orbitron", sans-serif;
+
+    text-align: center;
+}
+
+
+
+
+footer {
+    width: 94%;
+
+    max-width: 1000px;
+
+    margin: 18px auto;
+
+    padding: 12px;
+
+    text-align: center;
+
+    border-top: 1px solid #168cff;
+
+    color: #cba7ff;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 12px;
+}
+
+
+
+.result-screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0, 0, 20, 0.92);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 100;
+}
+
+.result-screen.show {
+    display: flex;
+}
+
+.result-card {
+    width: min(90%, 550px);
+
+    padding: 42px;
+
+    text-align: center;
+
+    border: 2px solid var(--cyan);
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 20, 55, 0.98),
+            rgba(20, 0, 50, 0.98)
+        );
+
+    box-shadow:
+        0 0 50px rgba(0, 238, 255, 0.4);
+}
+
+.result-icon {
+    font-size: 65px;
+}
+
+.result-card h1 {
+    font-family: "Orbitron", sans-serif;
+
+    color: var(--cyan);
+
+    margin: 15px 0;
+}
+
+.final-score {
+    margin: 20px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 60px;
+
+    color: var(--green);
+}
+
+.final-score small {
+    font-size: 23px;
+
+    color: white;
+}
+
+.final-streak {
+    color: #ffae00;
+
+    font-family: "Orbitron", sans-serif;
+
+    margin-bottom: 20px;
+}
+
+.result-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.result-buttons button {
+    padding: 14px 25px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00bfff,
+            #852cff,
+            #ff22d6
+        );
+
+    font-family: "Orbitron", sans-serif;
+
+    cursor: pointer;
+}
+
+.result-buttons .logout-button {
+    background:
+        linear-gradient(
+            90deg,
+            #ff315c,
+            #a516ff
+        );
+}
+
+
+
+
+@keyframes loginAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes logoGlow {
+    from {
+        box-shadow:
+            0 0 10px var(--cyan);
+    }
+
+    to {
+        box-shadow:
+            0 0 30px var(--cyan),
+            0 0 45px rgba(255, 0, 200, 0.3);
+    }
+}
+
+@keyframes streakPulse {
+    from {
+        box-shadow:
+            0 0 8px orange;
+    }
+
+    to {
+        box-shadow:
+            0 0 25px orange;
+    }
+}
+
+@keyframes fireBounce {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.25) rotate(4deg);
+    }
+}
+
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+@keyframes electric {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+
+@media (max-width: 1150px) {
+
+    .main-container {
+        grid-template-columns:
+            150px
+            1fr;
+    }
+
+    .right-panel {
+        grid-column: 2;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .motivational-card {
+        display: none;
+    }
+
+    .top-header {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+}
+
+
+
+@media (max-width: 750px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .login-container {
+        padding: 27px 20px;
+    }
+
+    .login-logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .login-title h1 {
+        font-size: 27px;
+    }
+
+    .top-header {
+        width: 92%;
+
+        justify-content: center;
+    }
+
+    .college-logo-box {
+        width: 65px;
+        height: 65px;
+    }
+
+    .streak-box {
+        min-width: 100px;
+    }
+
+    .logo-text,
+    .quiz-text {
+        font-size: 23px;
+    }
+
+    .logo-box {
+        padding: 9px 13px;
+    }
+
+    .tagline,
+    .fun-message {
+        display: none;
+    }
+
+    .main-container {
+        width: 92%;
+
+        display: block;
+    }
+
+    .sidebar {
+        display: flex;
+
+        overflow-x: auto;
+
+        margin-bottom: 15px;
+
+        padding: 8px;
+    }
+
+    .side-item {
+        flex-shrink: 0;
+
+        margin: 0 5px;
+
+        padding: 10px 14px;
+    }
+
+    .side-item p {
+        display: none;
+    }
+
+    .right-panel {
+        margin-top: 15px;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .quiz-top {
+        flex-direction: column;
+    }
+
+    .question-card {
+        padding: 18px;
+    }
+
+    .question-title h1 {
+        font-size: 19px;
+    }
+
+    .bottom-area {
+        grid-template-columns: 1fr;
+    }
+
+    .next-button {
+        width: 100%;
+    }
+
+    .robot-message {
+        margin-left: 5px;
+    }
+
+    .robot {
+        font-size: 43px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .right-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .college-logo-box {
+        width: 55px;
+        height: 55px;
+    }
+
+    .logo-text,
+    .quiz-text {
+        font-size: 20px;
+    }
+
+    .answer {
+        font-size: 13px;
+
+        padding: 12px;
+    }
+
+    .question-card {
+        padding: 14px;
+    }
+}
+
+
+
+
+.thank-you-section {
+    margin-top: 28px;
+    padding: 20px 15px;
+
+    border: 1px solid var(--cyan);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 238, 255, 0.08),
+            rgba(168, 85, 255, 0.12)
+        );
+
+    box-shadow:
+        0 0 18px rgba(0, 238, 255, 0.18);
+
+    text-align: center;
+
+    animation: thankYouGlow 2s infinite alternate;
+}
+
+.thank-you-icon {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.thank-you-section h2 {
+    margin-bottom: 10px;
+
+    color: var(--cyan);
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 16px;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 10px var(--cyan);
+}
+
+.thank-you-section p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    margin-bottom: 3px;
+}
+
+.thank-you-section p strong {
+    color: var(--yellow);
+
+    font-family: "Orbitron", sans-serif;
+}
+
+.thank-you-section span {
+    color: #b9c8ff;
+
+    font-size: 11px;
+
+    font-family: "Orbitron", sans-serif;
+
+    letter-spacing: 0.5px;
+}
+
+@keyframes thankYouGlow {
+
+    from {
+        box-shadow:
+            0 0 10px rgba(0, 238, 255, 0.15);
+    }
+
+    to {
+        box-shadow:
+            0 0 25px rgba(0, 238, 255, 0.35),
+            0 0 35px rgba(168, 85, 255, 0.15);
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .thank-you-section {
+        margin-top: 22px;
+        padding: 17px 10px;
+    }
+
+    .thank-you-section h2 {
+        font-size: 13px;
+    }
+
+    .thank-you-section p {
+        font-size: 12px;
+    }
+
+    .thank-you-section span {
+        font-size: 9px;
+    }
+
+}

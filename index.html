@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECE Quiz - Student Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="background-overlay"></div>
+
+    <!-- ================= LOGIN PAGE ================= -->
+
+    <section id="loginPage" class="login-page">
+
+        <div class="login-container">
+
+            <!-- COLLEGE LOGO -->
+            <div class="login-logo">
+                <img src="college-logo.png" alt="College Logo">
+            </div>
+
+            <div class="login-title">
+                <span>⚡</span>
+                <h1>ECE QUIZ</h1>
+                <span>⚡</span>
+            </div>
+
+            <p class="login-subtitle">
+                ELECTRONICS & COMMUNICATION ENGINEERING
+            </p>
+
+            <div class="login-line"></div>
+
+            <h2>🎓 Student Login</h2>
+
+            <p class="welcome-text">
+                Welcome, Future Engineer! 🚀
+            </p>
+
+            <!-- SPR NUMBER -->
+            <div class="input-group">
+
+                <label for="sprNumber">
+                    🆔 SPR NO :
+                </label>
+
+                <input
+                    type="text"
+                    id="sprNumber"
+                    placeholder="Enter your SPR Number"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- PASSWORD / DOB -->
+            <div class="input-group">
+
+                <label for="dobPassword">
+                    🔐 PASSWORD :
+                </label>
+
+                <div class="password-wrapper">
+
+                    <input
+                        type="password"
+                        id="dobPassword"
+                        placeholder="Enter your Date of Birth"
+                        autocomplete="off"
+                    >
+
+                    <button
+                        type="button"
+                        id="showPassword"
+                        class="show-password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+                <div class="dob-note">
+                    💡 <strong>Password is your Date of Birth</strong>
+                </div>
+
+                <div class="dob-format">
+                    Enter DOB in DD/MM/YYYY format
+                </div>
+
+            </div>
+
+
+            <!-- ERROR -->
+            <div id="loginError" class="login-error"></div>
+
+
+            <!-- LOGIN BUTTON -->
+            <button
+                id="loginButton"
+                class="login-button"
+            >
+                ENTER QUIZ
+                <span>➜</span>
+            </button>
+
+
+            <div class="login-footer">
+                ⚡ Think &nbsp; • &nbsp; Select &nbsp; • &nbsp; Excel ⚡
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= QUIZ PAGE ================= -->
+
+    <section id="quizPage" class="quiz-page hidden">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+
+            <!-- COLLEGE LOGO -->
+            <div class="college-logo-box">
+                <img src="college-logo.png" alt="College Logo">
+            </div>
+
+            <!-- STREAK -->
+            <div class="streak-box">
+
+                <div class="streak-icon">🔥</div>
+
+                <div>
+                    <span class="streak-label">STREAK</span>
+                    <strong id="streak">0</strong>
+                </div>
+
+            </div>
+
+            <!-- QUIZ LOGO -->
+            <div class="logo-box">
+
+                <span class="pulse">⚡</span>
+
+                <span class="logo-text">ECE</span>
+
+                <span class="quiz-text">QUIZ</span>
+
+                <span class="chip">▣</span>
+
+            </div>
+
+            <div class="tagline">
+                Think ⚡ Select ⚡ Excel
+            </div>
+
+            <div class="fun-message">
+                Small Circuits...<br>
+                Big Dreams! 😎
+            </div>
+
+        </header>
+
+
+
+        <div class="main-container">
+
+            <!-- LEFT SIDEBAR -->
+            <aside class="sidebar">
+
+                <div class="side-item active">
+                    <span>⚡</span>
+                    <p>Quiz</p>
+                </div>
+
+                <div class="side-item">
+                    <span>🔥</span>
+                    <p>Streak</p>
+                </div>
+
+                <div class="side-item">
+                    <span>🏆</span>
+                    <p>Challenge</p>
+                </div>
+
+                <div class="side-item">
+                    <span>💻</span>
+                    <p>ECE Lab</p>
+                </div>
+
+                <div class="side-item">
+                    <span>🤖</span>
+                    <p>Future</p>
+                </div>
+
+            </aside>
+
+
+
+            <!-- QUIZ AREA -->
+            <main class="quiz-area">
+
+                <div class="quiz-top">
+
+                    <div class="question-number">
+                        📋 Question
+                        <span id="questionNumber">1</span>
+                        of 20
+                    </div>
+
+                    <div class="score-box">
+                        ⭐ Score:
+                        <span id="score">0</span>
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+                <div class="progress-container">
+
+                    <div class="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+
+                    <span id="progressPercent">5%</span>
+
+                </div>
+
+
+                <!-- ROBOT -->
+                <div class="robot-message">
+
+                    <div class="robot">
+                        🤖
+                    </div>
+
+                    <div class="speech">
+                        <span id="robotText">
+                            You got this! 🚀
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION CARD -->
+                <section class="question-card">
+
+                    <div class="question-title">
+
+                        <div class="question-icon">
+                            ⚡
+                        </div>
+
+                        <h1 id="question">
+                            What does ECE stand for?
+                        </h1>
+
+                    </div>
+
+
+                    <div id="answers" class="answers"></div>
+
+
+                    <!-- MOTIVATION -->
+                    <div
+                        id="motivationMessage"
+                        class="motivation-message"
+                    >
+                        🚀 Believe in yourself!
+                    </div>
+
+
+                    <div class="bottom-area">
+
+                        <div class="hint-box">
+
+                            <div class="hint-title">
+                                💡 Hint
+                            </div>
+
+                            <p id="hint"></p>
+
+                        </div>
+
+
+                        <div
+                            class="fun-comment"
+                            id="funComment"
+                        >
+                            😎 Easy one... warm up!
+                        </div>
+
+
+                        <button
+                            id="nextButton"
+                            class="next-button"
+                            disabled
+                        >
+                            Next
+                            <span>➜</span>
+                        </button>
+
+                    </div>
+
+
+                    <div id="feedback" class="feedback"></div>
+
+                </section>
+
+            </main>
+
+
+
+            <!-- RIGHT PANEL -->
+            <aside class="right-panel">
+
+                <div class="info-card">
+
+                    <h2>📊 Your Progress</h2>
+
+                    <div class="mini-progress">
+
+                        <span class="dot active-dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+
+                        <strong>
+                            <span id="sideQuestion">1</span> / 20
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card score-card">
+
+                    <h2>⭐ Score Board</h2>
+
+                    <div class="big-score">
+
+                        <span id="sideScore">0</span>
+
+                        <small>/ 20</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card streak-panel">
+
+                    <h2>🔥 Answer Streak</h2>
+
+                    <div class="streak-display">
+
+                        <span id="bigStreak">0</span>
+
+                        <small>
+                            correct in a row
+                        </small>
+
+                    </div>
+
+                    <div
+                        class="streak-fire"
+                        id="streakFire"
+                    >
+                        🔥
+                    </div>
+
+                </div>
+
+
+                <div class="info-card difficulty-card">
+
+                    <h2>🎯 Difficulty</h2>
+
+                    <div
+                        id="difficulty"
+                        class="difficulty"
+                    >
+                        NORMAL
+                    </div>
+
+                    <p>
+                        Last 5 Questions are EASY 😁
+                    </p>
+
+                </div>
+
+
+                <div class="motivational-card">
+
+                    <div>
+                        You can<br>
+                        do it! 😎
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+
+        <footer>
+
+            <span>📡</span>
+
+            Electronics
+
+            <b>+</b>
+
+            Communication
+
+            <b>=</b>
+
+            A Connected World
+
+            <span>🌐</span>
+
+        </footer>
+
+
+        <!-- RESULT SCREEN -->
+        <div
+            id="resultScreen"
+            class="result-screen"
+        >
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    🏆
+                </div>
+
+                <h1>
+                    QUIZ COMPLETE!
+                </h1>
+
+                <p id="resultMessage">
+                    Great job!
+                </p>
+
+                <div class="final-score">
+
+                    <span id="finalScore">0</span>
+
+                    <small>/ 20</small>
+
+                </div>
+
+                <div class="final-streak">
+
+                    🔥 Best Streak:
+                    <strong id="bestStreak">0</strong>
+
+                </div>
+
+                <div class="result-buttons">
+
+                    <button id="restartButton">
+                        🔄 Play Again
+                    </button>
+
+                    <button
+                        id="logoutButton"
+                        class="logout-button"
+                    >
+                        🚪 Logout
+                    </button>
+
+<div class="thank-you-section">
+
+    <div class="thank-you-icon">
+        💙
+    </div>
+
+    <h2>
+        THANK YOU FOR VISITING THE SITE!
+    </h2>
+
+    <p>
+        Created by :
+        <strong>Rooban V</strong>
+    </p>
+
+    <span>
+        "ECE 1st Year Student"
+    </span>
+
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
